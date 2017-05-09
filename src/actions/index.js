@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const FETCH_VENUE = 'FETCH_VENUE';
 export const EVENT_SELECTED = 'EVENT_SELECTED';
 
 const API_URL = 'https://www.eventbriteapi.com/v3';
@@ -14,9 +15,22 @@ export function fetchEvents(searchTerm) {
       q: searchTerm
     }
   });
-
+  
   return {
     type: FETCH_EVENTS,
+    payload: request
+  };
+}
+
+export function fetchVenue(venue_id) {
+  const url = `${API_URL}/venues/${venue_id}`
+
+  const request = axios.get(url);
+
+  console.log(request.data);
+
+  return {
+    type: FETCH_VENUE,
     payload: request
   };
 }

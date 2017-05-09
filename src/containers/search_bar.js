@@ -27,8 +27,8 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     
-    this.props.selectEvent(null)
     this.props.fetchEvents(this.state.term);
+    this.props.selectEvent(null)
   }
 
   render() {
